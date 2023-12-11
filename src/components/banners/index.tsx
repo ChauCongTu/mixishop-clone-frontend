@@ -19,7 +19,7 @@ const Banner = () => {
                 banners.map((value : BannerType, index) => {
                     return (
                         <div key={value.id}>
-                            <img src={value.url_image} className='w-full h-5/6' />
+                            <img src='https://shop.mixigaming.com/wp-content/uploads/2023/01/A%CC%89nh-bia-mixishop-1-scaled.jpg' className='w-full h-5/6' />
                         </div>
                     );
                 })
