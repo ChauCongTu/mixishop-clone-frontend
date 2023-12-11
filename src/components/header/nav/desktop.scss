@@ -1,0 +1,22 @@
+.category {
+    position: relative;
+    cursor: pointer;
+    .mini-menu {
+        position: absolute;
+        top: 100%;
+        z-index: 10;
+        background-color: black;
+    }
+}
+._navbar {
+    position: relative;
+    .menu {
+        position: fixed;
+        top: 80px;
+        z-index: 100;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        background-color: #fff;
+    }
+}

@@ -1,0 +1,19 @@
+._blur {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    background-color: black;
+    opacity: .4;
+    width: 100vw;
+    height: 100vh;
+}
+.nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 70vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 11;
+}

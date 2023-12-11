@@ -41,3 +41,8 @@ export const timeToEndOfDay = (date?: string | Date) => {
 export const timeToStartOfDay = (date?: string | Date) => {
   return dayjs(date).startOf("day").toDate();
 };
+
+export const getCurrentTime = (): number => {
+  const currentTimestampInSeconds = Math.floor(new Date().getTime() / 1000);
+  return currentTimestampInSeconds;
+};

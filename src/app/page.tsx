@@ -1,94 +1,56 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import styles from './page.module.css'
+"use client"
+import Banner from '@/components/banners'
+import { getCategories } from '@/modules/categories/services/getCategories';
+import { CategoryType } from '@/modules/categories/types/type';
+import { Divider } from 'antd';
+import { useEffect, useState } from 'react';
+import '../../node_modules/video-react/styles/scss/video-react.scss';
+import ReactPlayer from 'react-player';
+
+import { Player } from 'video-react';
+import NewProduct from '@/components/product/newProducts';
 
 export default function Home() {
+  const [categories, setCategories] = useState<CategoryType[]>([]);
+  useEffect(() => {
+    getCategories()
+      .then((res: CategoryType[]) => {
+        setCategories(res);
+        console.log(res);
+      });
+  }, []);
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          <Link href={'/login'}>Login</Link> Hello world 
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <main>
+      <Banner />
+      <div className='text-center py-20 text-3xl font-bold'>
+        <p className=''>SẢN PHẨM MỚI</p>
+      </div>
+      {/* Best Seller Component */}
+      <NewProduct />
+      {/* Component */}
+      <div className='px-3 lg:px-40'>
+        {
+          categories.map((value, index) => {
+            if (value.children.length == 0) {
+              return (
+                <div key={value.id}>
+                  <div className='py-10 text-xl font-bold'>
+                    {value.name}
+                    <Divider />
+                  </div>
+                  <div>
+                    {/* Component */}
+                    List SP
+                  </div>
+                </div>
+              );
+            }
+          })
+        }
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className='px-3 lg:px-40'>
+        
       </div>
     </main>
   )

@@ -1,0 +1,23 @@
+.logo {
+    color: red;
+}
+
+// index.scss
+
+.header_mobile {
+    // Kiểu CSS cho Mobile Header
+    display: block;
+
+    @media (min-width: 768px) {
+        display: none; // Ẩn khi màn hình lớn hơn hoặc bằng 768px
+    }
+}
+
+.header_desktop {
+    // Kiểu CSS cho Desktop Header
+    display: none;
+    @media (min-width: 768px) {
+        display: block; // Hiển thị khi màn hình lớn hơn hoặc bằng 768px
+        padding-bottom: 80px;
+    }
+}
