@@ -16,7 +16,7 @@ const NewProduct = (props: Props) => {
             <div className='flex flex-wrap'>
                 {
                     products.map((value, index) => (
-                        <div key={value.id}>
+                        <div className='w-2/4 lg:w-1/4 p-1' key={value.id}>
                             <ProductItem product={value} />
                         </div>
                     ))

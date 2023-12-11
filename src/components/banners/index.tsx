@@ -16,7 +16,7 @@ const Banner = () => {
     return (
         <Carousel autoplay autoplaySpeed={1000}>
             {
-                banners.map((value, index) => {
+                banners.map((value : BannerType, index) => {
                     return (
                         <div key={value.id}>
                             <img src={value.url_image} className='w-full h-5/6' />

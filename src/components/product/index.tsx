@@ -9,7 +9,7 @@ interface Props {
 
 const ProductItem: React.FC<Props> = ({ product }) => {
     return (
-        <div className='w-2/4 lg:w-1/4'>
+        <>
             <div className="img">
                 <img src={product.images[0].url_image} className='w-full' alt='' />
             </div>
@@ -22,7 +22,7 @@ const ProductItem: React.FC<Props> = ({ product }) => {
                 </div>
                 <div className='block font-bold'><ProductPrice product={product} /></div>
             </div>
-        </div>
+        </>
     )
 }
 
