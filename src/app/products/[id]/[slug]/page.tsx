@@ -59,11 +59,11 @@ const ProductPage = ({ params }: { params: { id: number, slug: string } }) => {
                     />
                 </div>
                 <div className='flex flex-wrap mt-5 bg-white-500'>
-                    <div className='w-full lg:w-2/6'>
+                    <div className='lg:w-3/6'>
                         {/* Image Slider */}
                         <ImageGallery items={imagesList} autoPlay showPlayButton={false} thumbnailPosition={'left'} />
                     </div>
-                    <div className='w-full lg:w-2/6 ms-10'>
+                    <div className='lg:w-3/6 lg:ps-10'>
                         <ProductInfo
                             id={params.id}
                             product={product}
