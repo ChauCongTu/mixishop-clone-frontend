@@ -41,7 +41,7 @@ const ProductInfo: React.FC<Props> = ({ id, product, quantity, size, color, size
             <Divider />
             <div className="text-xl mt-5"><ProductPrice product={product} /></div>
             <div className='mt-5'>
-                {/* <CountdownComponent discountTo={product.discount_to} /> */}
+                <CountdownComponent timestamp={product.discount_to} />
             </div>
             <div className="mt-5 flex">
                 <Select

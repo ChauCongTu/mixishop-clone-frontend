@@ -18,10 +18,13 @@
     "@types/react-dom": "18.2.4",
     "antd": "^5.12.1",
     "axios": "^1.6.2",
+    "date-fns": "^2.30.0",
     "dayjs": "^1.11.10",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
-    "next": "13.4.2",
+    "js-cookie": "^3.0.5",
+    "moment": "^2.29.4",
+    "next": "^14.0.5-canary.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
@@ -29,9 +32,11 @@
     "react-player": "^2.13.0",
     "react-responsive-carousel": "^3.2.23",
     "typescript": "5.0.4",
-    "video-react": "^0.16.0"
+    "video-react": "^0.16.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
     "@types/react-image-gallery": "^1.2.4",
     "@types/video-react": "^0.15.5",
     "autoprefixer": "^10.4.16",

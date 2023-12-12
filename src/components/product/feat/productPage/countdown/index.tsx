@@ -1,78 +1,63 @@
-// import React from 'react';
-// import Countdown from 'react-countdown';
-// import './index.scss'
+import React, { useState, useEffect } from 'react';
+import { differenceInSeconds, format } from 'date-fns';
+import './index.scss'
 
-// interface Props {
-//     discountTo: number;
-// }
+const padZero = (num: number) => (num < 10 ? `0${num}` : num);
 
-// interface RendererProps {
-//     days: number;
-//     hours: number;
-//     minutes: number;
-//     seconds: number;
-//     completed: boolean;
-// }
+const CountdownTimer: React.FC<{ timestamp: number; label?: string | 'KHUYẾN MÃI CÒN' }> = ({ timestamp, label }) => {
+  const [remainingTime, setRemainingTime] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
-// const formatTime = (value: number) => (value < 10 ? `0${value}` : value);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const now = Date.now();
+      const distanceInSeconds = differenceInSeconds(timestamp * 1000, now);
 
-// const renderer: React.FC<RendererProps> = ({ days, hours, minutes, seconds, completed }) => {
-//     if (completed) {
-//         return <></>;
-//     } else {
-//         const formattedDays = formatTime(days);
-//         const formattedHours = formatTime(hours);
-//         const formattedMinutes = formatTime(minutes);
-//         const formattedSeconds = formatTime(seconds);
+      if (distanceInSeconds > 0) {
+        const days = Math.floor(distanceInSeconds / (24 * 3600));
+        const hours = Math.floor((distanceInSeconds % (24 * 3600)) / 3600);
+        const minutes = Math.floor((distanceInSeconds % 3600) / 60);
+        const seconds = distanceInSeconds % 60;
 
-//         return (
-//             <>
-//                 <div className='countdown_'>
-//                     <div className='countdown_title'>
-//                         <div className="text-white font-bold">ĐẶT HÀNG TRƯỚC</div>
-//                     </div>
-//                     <div className='countdown__'>
-//                         <div className='date-item'>
-//                             <div className='value'>{formattedDays}</div>
-//                             <div className='name'>Ngày</div>
-//                         </div>
-//                         <div className='date-item'>
-//                             <div className='value'>{formattedHours}</div>
-//                             <div className='name'>Giờ</div>
-//                         </div>
-//                         <div className='date-item'>
-//                             <div className='value'>{formattedMinutes}</div>
-//                             <div className='name'>Phút</div>
-//                         </div>
-//                         <div className='date-item'>
-//                             <div className='value'>{formattedSeconds}</div>
-//                             <div className='name'>Giây</div>
-//                         </div>
-//                     </div>
+        setRemainingTime({ days, hours, minutes, seconds });
+      } else {
+        return <></>;
+      }
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, [timestamp]);
 
-//                 </div>
-//             </>
-//         );
-//     }
-// };
-
-// const CountdownComponent: React.FC<Props> = ({ discountTo }) => {
-//     return (
-//         <>
-//             <Countdown date={discountTo * 1000} renderer={renderer} />
-//         </>
-//     );
-// };
-
-// export default CountdownComponent;
-import React from 'react'
-
-type Props = {}
-
-const index = (props: Props) => {
   return (
-    <div>index</div>
-  )
-}
+    <div>
+      <div className="countdown_">
+        <div className="countdown_title">
+          <div className="text-white font-bold py-3">{label ? label : 'KHUYẾN MÃI CÒN'}</div>
+        </div>
+        <div className="countdown__">
+          <div className="date-item">
+            <div className="value">{padZero(remainingTime.days)}</div>
+            <div className="name">Ngày</div>
+          </div>
+          <div className="date-item">
+            <div className="value">{padZero(remainingTime.hours)}</div>
+            <div className="name">Giờ</div>
+          </div>
+          <div className="date-item">
+            <div className="value">{padZero(remainingTime.minutes)}</div>
+            <div className="name">Phút</div>
+          </div>
+          <div className="date-item">
+            <div className="value">{padZero(remainingTime.seconds)}</div>
+            <div className="name">Giây</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default index
+export default CountdownTimer;

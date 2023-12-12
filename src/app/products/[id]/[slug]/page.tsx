@@ -11,6 +11,8 @@ import { getOptions } from '@/modules/products/services/options/getOptions'
 import { getQuantity } from '@/modules/products/services/options/getQuantity'
 import { OptionType } from '@/modules/products/types/optionType'
 import ProductInfo from '@/components/product/feat/productPage/productInfo'
+import MainProductPage from '@/components/product/feat/productPage/main'
+import { metadata } from '@/app/layout'
 
 const ProductPage = ({ params }: { params: { id: number, slug: string } }) => {
     const [product, setProduct] = useState<ProductFullInfo>();
@@ -27,6 +29,7 @@ const ProductPage = ({ params }: { params: { id: number, slug: string } }) => {
             .then((res) => {
                 setProduct(res);
             })
+            .catch((e) => {throw e})
             .finally(() => setLoading(false));
         getOptions(params.id)
             .then((res: any) => {
@@ -34,7 +37,7 @@ const ProductPage = ({ params }: { params: { id: number, slug: string } }) => {
                 setColors(res.sizes);
             });
     }, []);
-    if (!product || !product.options) {
+    if (!product) {
         return <></>
     }
 
@@ -45,7 +48,7 @@ const ProductPage = ({ params }: { params: { id: number, slug: string } }) => {
     }));
     return (
         <div className='px-3 lg:px-40'>
-            <Spin spinning={loading} size="large" delay={100} tip="Loading...">
+            <Spin spinning={loading} size="large" tip="Loading...">
                 <div className='block mt-5'>
                     <Breadcrumb
                         items={[
@@ -57,11 +60,11 @@ const ProductPage = ({ params }: { params: { id: number, slug: string } }) => {
                     />
                 </div>
                 <div className='flex flex-wrap mt-5 bg-white-500'>
-                    <div className='lg:w-3/6'>
+                    <div className='w-full lg:w-2/6'>
                         {/* Image Slider */}
                         <ImageGallery items={imagesList} autoPlay showPlayButton={false} thumbnailPosition={'left'} />
                     </div>
-                    <div className='lg:w-3/6 lg:ps-10'>
+                    <div className='w-full lg:w-2/6 lg:px-5'>
                         <ProductInfo
                             id={params.id}
                             product={product}
@@ -75,12 +78,18 @@ const ProductPage = ({ params }: { params: { id: number, slug: string } }) => {
                             setQuantity={setQuantity}
                         />
                     </div>
-                    <div className='w-full lg:w-2/6 ms-3'>
+                    <div className='w-full mt-5 lg:mt-0 lg:w-2/6 lg:px-5'>
                         <div className='font-bold text-xl'>THÔNG TIN SẢN PHẨM</div>
                         <div className='mt-5'>
                             {product.summary}
                         </div>
                     </div>
+                </div>
+                <div className='mt-10'>
+                    <MainProductPage product={product} id={params.id}/>
+                </div>
+                <div className='mt-10'>
+                    {/* Relative Product */}
                 </div>
             </Spin>
         </div>

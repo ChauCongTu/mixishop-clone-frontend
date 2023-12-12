@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { format } from 'date-fns';
 
 /**
  * The function `formatTimeToString` takes a date and a format string as input and returns a formatted
@@ -46,3 +47,11 @@ export const getCurrentTime = (): number => {
   const currentTimestampInSeconds = Math.floor(new Date().getTime() / 1000);
   return currentTimestampInSeconds;
 };
+
+export const formatDate = (inputDate: string | null) => {
+  if (!inputDate) {
+    inputDate = '2023-12-09T08:20:38.000000Z';
+  }
+  const date = new Date(inputDate);
+  return format(date, 'HH:mm dd/MM/yyyy');
+}
