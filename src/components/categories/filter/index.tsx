@@ -6,11 +6,14 @@ import React, { useState } from 'react';
 type Props = {
     price: number[];
     setPrice: React.Dispatch<React.SetStateAction<number[]>>;
-    onPriceClick: () => void
+    sortBy: any;
+    setSortBy: React.Dispatch<React.SetStateAction<any>>;
+    onPriceClick: () => void;
+    onSortChange: () => void
 };
 
-const CategoriesFilter: React.FC<Props> = ({ price, setPrice, onPriceClick }) => {
-    const [sortBy, setSortBy] = useState<{ value: string, label: string }>({ value: 'created_at', label: 'Mới Nhất' })
+const CategoriesFilter: React.FC<Props> = ({ price, setPrice, sortBy, setSortBy, onPriceClick, onSortChange }) => {
+    
     const onChange = (newValue: number[]) => {
         setPrice(newValue);
     };
@@ -47,7 +50,10 @@ const CategoriesFilter: React.FC<Props> = ({ price, setPrice, onPriceClick }) =>
                 <Divider />
                 <div className='mt-3'>
                     <p className='mb-5'>Hiển thị theo</p>
-                    <Select style={{ width: '100%' }} placeholder='Mới Nhất' onChange={(selectedOption) => setSortBy(selectedOption)} options={SortCategories} />
+                    <Select style={{ width: '100%' }} placeholder='Mới Nhất' onChange={(selectedOption) => {
+                        setSortBy(selectedOption);
+                        onSortChange
+                    }} options={SortCategories} />
                 </div>
             </Card>
         </>

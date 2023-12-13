@@ -20,3 +20,18 @@
         background-color: #fff;
     }
 }
+
+.nav_item {
+    cursor: pointer;
+    padding: 0 10px;
+    font-weight: 700; 
+    div {
+        display: none;
+    }
+}
+
+.nav_item:hover {
+    div {
+        display: block;
+    }
+}

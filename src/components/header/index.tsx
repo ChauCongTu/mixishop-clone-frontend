@@ -9,10 +9,12 @@ import DesktopNav from './nav/desktop';
 import { CategoryType } from '@/modules/categories/types/type';
 import { getCategories } from '@/modules/categories/services/getCategories';
 import Link from 'next/link';
+import PersonIcon from '@mui/icons-material/Person';
+import { formatCurrency } from '@/utils/currency';
 
 const Header = () => {
     const [categories, setCategories] = useState<CategoryType[]>([]);
-    useEffect(()=>{
+    useEffect(() => {
         getCategories()
             .then((res: CategoryType[]) => {
                 setCategories(res);
@@ -34,10 +36,13 @@ const Header = () => {
                 <div className='mx-auto px-40 flex justify-between py-3 items-center shadow-lg w-full fixed z-10 bg-white'>
                     <div className="logo font-bold text-lg w-1/6"><Link href={'/'}><Image src="/logo-600w.png" width={90} height={58} alt="MixiShop" /></Link> </div>
                     <div className='w-5/6'><DesktopNav categories={categories} /></div>
-                    <Link href={'tel:'} className='font-bold me-5'>092222289</Link>
+                    <div className='mx-5 flex cursor-pointer'><span className='mx-1'>{formatCurrency(0)}</span><span className='mx-1'>(0)</span><ShoppingCartIcon fontSize='medium' /></div>
                     |
-                    <div className='mx-5'><ShoppingCartIcon fontSize='medium' /></div>
-                    |
+                    <div className='mx-5 cursor-pointer'>
+                        <Link href={'/login'}>
+                            <PersonIcon fontSize='medium' />
+                        </Link>
+                    </div>
                 </div>
             </div>
         </header>

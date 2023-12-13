@@ -6,7 +6,7 @@ import { Breadcrumb, Button, Divider, InputNumber, Select, Spin } from 'antd'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import ImageGallery from "react-image-gallery";
-import '../../../../../node_modules/react-image-gallery/styles/scss/image-gallery.scss';
+import '../../../../../../node_modules/react-image-gallery/styles/scss/image-gallery.scss';
 import { getOptions } from '@/modules/products/services/options/getOptions'
 import { getQuantity } from '@/modules/products/services/options/getQuantity'
 import { OptionType } from '@/modules/products/types/optionType'

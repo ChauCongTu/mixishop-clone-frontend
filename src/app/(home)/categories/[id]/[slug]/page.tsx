@@ -15,6 +15,7 @@ const CategoriesPage = ({ params }: { params: { id: number, slug: string } }) =>
   const [category, setCategory] = useState<CategoryType>()
   const [products, setProducts] = useState<ProductType[]>([]);
   const [price, setPrice] = useState([10000, 5000000]);
+  const [sortBy, setSortBy] = useState<{ value: string, label: string }>({ value: 'created_at', label: 'Mới Nhất' })
   const fetchProduct = (price_min?: number, price_max?: number, sort?: string) => {
     getCategoryProducts(params.id, { price_min: price_min, price_max: price_max, sort: sort })
       .then((res: any) => setProducts(res.data))
@@ -30,7 +31,11 @@ const CategoriesPage = ({ params }: { params: { id: number, slug: string } }) =>
     return <></>
   }
   const onPriceClick = () => {
-    toast.success("Lọc")
+    fetchProduct(price[0], price[1]);
+    toast.success("Lọc Thành Công!")
+  }
+  const onSortChange = () => {
+    toast.success("Thay đổi")
   }
   return (
     <>
@@ -43,10 +48,11 @@ const CategoriesPage = ({ params }: { params: { id: number, slug: string } }) =>
               { title: <Link href={'/'}>Mua Sắm</Link> }
             ]}
           />
+          ({products.length} sản phẩm)
         </div>
         <div className='flex mt-5'>
           <div className='w-full sm:order-2 lg:order-1 lg:w-2/6'>
-            <CategoriesFilter onPriceClick={onPriceClick} setPrice={setPrice} price={price} />
+            <CategoriesFilter onPriceClick={onPriceClick} onSortChange={onSortChange} setPrice={setPrice} price={price} sortBy={sortBy} setSortBy={setSortBy} />
           </div>
           <div className='w-full sm:order-1 lg:order-2 lg:ps-5 lg:w-4/6'>
             <CategoryProduct products={products} />
