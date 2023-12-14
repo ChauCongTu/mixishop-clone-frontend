@@ -1,20 +1,18 @@
 'use client'
+import { fetchProfile } from '@/modules/auth/services/getProfile';
+import { LoginResponse } from '@/modules/auth/types/type';
+import { UserType } from '@/modules/users/types/type';
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 interface AuthContextProps {
     children: ReactNode;
 }
 
-interface UserProfile {
-    username: string;
-    email: string;
-    // ... other user profile fields
-}
-
 interface AuthContextValue {
     isLoggedIn: boolean;
-    profile: UserProfile | null;
-    login: (profile: UserProfile) => void;
+    profile: UserType | null;
+    login: (profile: LoginResponse) => void;
     logout: () => void;
 }
 
@@ -22,7 +20,7 @@ const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 const AuthProvider: React.FC<AuthContextProps> = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-    const [profile, setProfile] = useState<UserProfile | null>(null);
+    const [profile, setProfile] = useState<UserType | null>(null);
 
     useEffect(() => {
         // Check if localStorage is available
@@ -32,18 +30,22 @@ const AuthProvider: React.FC<AuthContextProps> = ({ children }) => {
                 setIsLoggedIn(true);
                 // Fetch user profile based on the token if needed
                 // For simplicity, let's assume you have a function fetchUserProfile(token)
-                // const userProfile = fetchUserProfile(token);
-                // setProfile(userProfile);
+                fetchProfile(token)
+                    .then((res: UserType) => setProfile(res))
+                    .catch((e) => {
+                        toast.error('Invalid Operator');
+                        console.log('Lỗi fetch >>>>> ' + e);
+                    })
             }
         }
     }, []);
 
-    const login = (userProfile: UserProfile) => {
+    const login = (userProfile: LoginResponse) => {
         setIsLoggedIn(true);
-        setProfile(userProfile);
+        setProfile(userProfile.login);
         // Save user token to localStorage
         if (typeof window !== 'undefined') {
-            localStorage.setItem('token', 'your_token');
+            localStorage.setItem('token', userProfile.token);
         }
     };
 

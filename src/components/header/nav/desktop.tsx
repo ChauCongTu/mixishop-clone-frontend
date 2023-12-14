@@ -11,13 +11,12 @@ import { searchProducts } from '@/modules/products/services/searchProducts';
 import { ProductType } from '@/modules/products/types/type';
 import ProductPrice from '@/components/product/price/price';
 import { CloseCircleOutlined } from '@ant-design/icons';
-import PersonIcon from '@mui/icons-material/Person';
 
 interface DesktopNavProps {
     categories: CategoryType[];
 }
 
-const DesktopNav: React.FC<DesktopNavProps> = ({ categories }) => {
+const DesktopNav: React.FC<DesktopNavProps> =  ({ categories }) => {
     const [resProducts, setResProducts] = useState<ProductType[]>([])
     const [keyWord, setKeyWord] = useState('');
     useEffect(() => {

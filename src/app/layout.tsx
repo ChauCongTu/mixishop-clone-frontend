@@ -1,9 +1,7 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
-import { Toaster } from 'react-hot-toast'
-import { AuthProvider } from '@/providers/auth'
+import { Inter } from 'next/font/google';
+import { Toaster } from 'react-hot-toast';
+import { AuthProvider } from '@/providers/auth';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,6 +24,5 @@ export default function RootLayout({
         </body>
       </html>
     </AuthProvider>
-
   )
 }

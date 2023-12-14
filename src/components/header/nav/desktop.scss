@@ -26,12 +26,14 @@
     padding: 0 10px;
     font-weight: 700; 
     div {
+        transition: .7s;
         display: none;
     }
 }
 
 .nav_item:hover {
     div {
+        transition: .7s;
         display: block;
     }
 }

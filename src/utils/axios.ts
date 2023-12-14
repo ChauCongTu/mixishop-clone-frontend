@@ -1,3 +1,4 @@
+'use client'
 import axios, { AxiosInstance } from 'axios';
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
@@ -14,7 +15,7 @@ const instance: AxiosInstance = axios.create({
 instance.interceptors.request.use(
   (config) => {
     const storedToken = localStorage.getItem('token');
-    const token = storedToken ? JSON.parse(storedToken) : null; 
+    const token = storedToken ? storedToken : null;
     console.log(token);
     if (token) {
       console.log('Adding token to headers:', token);

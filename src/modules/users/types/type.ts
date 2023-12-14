@@ -1,13 +1,13 @@
 export type UserType = {
-    id: number | null;
+    id?: number;
     name: string;
     email: string;
-    email_verified_at: string | null;
+    email_verified_at?: string | null;
     role: string;
     gender: string;
     address: string;
-    created_at: string | null;
-    updated_at: string | null;
+    created_at?: string | null;
+    updated_at?: string | null;
     phone_number: string;
-    avatar: string | null;
+    avatar?: string | null;
 }
