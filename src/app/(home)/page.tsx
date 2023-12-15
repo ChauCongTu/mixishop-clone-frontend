@@ -2,10 +2,9 @@
 import Banner from '@/components/banners'
 import { getCategories } from '@/modules/categories/services/getCategories';
 import { CategoryType } from '@/modules/categories/types/type';
-import { Button, Card, Divider, Form, Input } from 'antd';
+import { Button, Card, Form, Input } from 'antd';
 import { useEffect, useState } from 'react';
-import '../../../node_modules/video-react/styles/scss/video-react.scss';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import NewProduct from '@/components/product/newProducts';
 import TextArea from 'antd/es/input/TextArea';
 import { SendOutlined } from '@ant-design/icons';

@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from '@/providers/auth';
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -17,6 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <AuthProvider>
+
       <html lang="en">
         <body className={inter.className}>
           {children}

@@ -2,15 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import './index.scss';
 import Image from 'next/image';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Divider } from 'antd';
 import MobileNav from './nav/mobile';
 import DesktopNav from './nav/desktop';
 import { CategoryType } from '@/modules/categories/types/type';
 import { getCategories } from '@/modules/categories/services/getCategories';
 import Link from 'next/link';
-import PersonIcon from '@mui/icons-material/Person';
-import { formatCurrency } from '@/utils/currency';
 import UserAuth from './auth';
 import CartNav from './cart';
 

@@ -2,7 +2,6 @@
 import { getBanners } from '@/modules/banners/services/getBanners';
 import { BannerType } from '@/modules/banners/types/type'
 import { Carousel, Spin } from 'antd';
-import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 

@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 import { Badge, Drawer, Button, Divider, List, Avatar } from 'antd';
 import {
@@ -6,8 +7,12 @@ import {
     CheckOutlined,
 } from '@ant-design/icons';
 import { formatCurrency } from '@/utils/currency';
+import { useCart } from "react-use-cart";
+
+
 
 const CartNav = () => {
+    // const { addItem } = useCart();
     const [cartVisible, setCartVisible] = useState(false);
 
     const showCartDrawer = () => {
@@ -26,6 +31,19 @@ const CartNav = () => {
 
     // Calculate total price
     const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+    // const product = {
+    //     id: "cjld2cjxh0000qzrmn831i7rn",
+    //     name: "Fresh Foam 1080v9",
+    //     brand: "New Balance",
+    //     color: "Neon Emerald with Dark Neptune",
+    //     size: "US 9",
+    //     width: "B - Standard",
+    //     sku: "W1080LN9",
+    //     price: 15000,
+    // };
+
+    // addItem(product, 2);
 
     return (
         <>

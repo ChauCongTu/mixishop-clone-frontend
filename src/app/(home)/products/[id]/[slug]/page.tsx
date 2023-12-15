@@ -1,18 +1,15 @@
 'use client'
-import ProductPrice from '@/components/product/price/price'
 import { getProduct } from '@/modules/products/services/getProduct'
 import { ProductFullInfo } from '@/modules/products/types/fullProduct'
-import { Breadcrumb, Button, Divider, InputNumber, Select, Spin } from 'antd'
+import { Breadcrumb, Spin } from 'antd'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import ImageGallery from "react-image-gallery";
 import '../../../../../../node_modules/react-image-gallery/styles/scss/image-gallery.scss';
 import { getOptions } from '@/modules/products/services/options/getOptions'
-import { getQuantity } from '@/modules/products/services/options/getQuantity'
-import { OptionType } from '@/modules/products/types/optionType'
 import ProductInfo from '@/components/product/feat/productPage/productInfo'
 import MainProductPage from '@/components/product/feat/productPage/main'
-import { metadata } from '@/app/layout'
+
 
 const ProductPage = ({ params }: { params: { id: number, slug: string } }) => {
     const [product, setProduct] = useState<ProductFullInfo>();

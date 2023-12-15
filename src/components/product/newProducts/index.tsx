@@ -1,7 +1,6 @@
 import { getProducts } from '@/modules/products/services/getProducts'
 import { ProductType } from '@/modules/products/types/type'
 import { Button, Spin } from 'antd'
-import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import ProductItem from '..'
