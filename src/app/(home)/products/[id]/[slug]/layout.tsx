@@ -1,20 +1,20 @@
 import { Metadata, ResolvingMetadata } from "next";
 
-type Params = {
+interface Params {
   id: string;
-};
+}
 
-type SearchParams = {
+interface SearchParams {
   [key: string]: string | string[] | undefined;
-};
+}
 
-type Props = {
+interface GenerateMetadataProps {
   params: Params;
   searchParams: SearchParams;
-};
+}
 
 export async function generateMetadata(
-  { params, searchParams }: Props,
+  { params, searchParams }: GenerateMetadataProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const id = params.id;
