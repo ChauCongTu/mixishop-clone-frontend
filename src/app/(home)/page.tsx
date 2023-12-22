@@ -19,7 +19,6 @@ export default function Home() {
       });
   }, []);
   const onFinish = (values: any) => {
-    // Xử lý khi gửi form thành công
     console.log('Received values:', values);
     toast.success("Gửi liên hệ thành công, chúng tôi sẽ liên hệ lại với bạn sớm nhất có thể!");
   };
@@ -28,6 +27,7 @@ export default function Home() {
       <Banner />
       <div className='text-center py-20 text-3xl font-bold'>
         <p className=''>SẢN PHẨM MỚI</p>
+        <div className='w-ful'></div>
       </div>
       <NewProduct />
       <div className='mt-10 px-3 lg:px-40'>

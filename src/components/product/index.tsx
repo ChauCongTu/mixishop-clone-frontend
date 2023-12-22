@@ -9,14 +9,28 @@ const { Meta } = Card;
 
 interface Props {
   product: ProductType;
+  isLoading: boolean;
 }
 
-const ProductItem: React.FC<Props> = ({ product }) => {
+const ProductItemSkeleton: React.FC = () => {
+  return (
+    <Card hoverable>
+      <div className="skeleton-image" />
+      <div className="skeleton-text" />
+    </Card>
+  );
+};
+
+const ProductItem: React.FC<Props> = ({ product, isLoading }) => {
   const productNameStyle = {
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
   };
+
+  if (isLoading) {
+    return <ProductItemSkeleton />;
+  }
 
   return (
     <Card

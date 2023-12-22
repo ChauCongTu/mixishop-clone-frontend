@@ -1,0 +1,27 @@
+.dash_nav {
+    margin-top: 10px;
+    padding: 0 20px;
+    line-height: 1.75;
+    .dash_ul {
+        .dash_item {
+            display: flex;
+            align-items: center; 
+            margin-top: 5px;
+            padding: 10px 0;
+        }
+        .active {
+            border: 1px solid #69b1ff;
+            color: #69b1ff;
+            padding-left: 20px;
+            border-radius: 15rem;
+            transition: .4s;
+        }
+    }
+    .dash_label {
+        color: rgb(163, 163, 163);
+        padding: 10px 0;
+        font-style: italic;
+        text-transform: uppercase;
+        padding-top: 10px;
+    }
+}

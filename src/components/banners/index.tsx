@@ -1,7 +1,7 @@
 'use client'
 import { getBanners } from '@/modules/banners/services/getBanners';
 import { BannerType } from '@/modules/banners/types/type'
-import { Carousel, Spin } from 'antd';
+import { Carousel, Skeleton, Spin } from 'antd';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 
@@ -18,19 +18,20 @@ const Banner = () => {
             .finally(() => setLoading(false));
     }, [])
     return (
-        <Spin spinning={loading} style={{ height: '300px' }} tip='Đang tải Banner ...'>
-            <Carousel autoplay autoplaySpeed={1000}>
-                {
-                    banners.map((value: BannerType, index) => {
-                        return (
-                            <div key={value.id}>
-                                <img src={value.url_image} className='w-full h-5/6' />
-                            </div>
-                        );
-                    })
-                }
-            </Carousel>
-        </Spin>
+        <>
+            {loading ? <Skeleton.Image style={{ width: '19747px', height:'80vh' }} active={loading}/> :
+                <Carousel autoplay autoplaySpeed={1000}>
+                    {
+                        banners.map((value: BannerType, index) => {
+                            return (
+                                <div key={value.id}>
+                                    <img src={value.url_image} className='w-full h-5/6' />
+                                </div>
+                            );
+                        })
+                    }
+                </Carousel>}
+        </>
     )
 }
 
