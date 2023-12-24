@@ -33,19 +33,6 @@ const CartItem: React.FC<Props> = ({ cartItem }) => {
             </div>
             <div className="flex items-center space-x-4">
                 <Space>
-                    <Button
-                        shape="circle"
-                        icon={<MinusOutlined />}
-                        size="small"
-                        onClick={() => decreaseItem(cartItem.productId, 1)}
-                    />
-                    {cartItem.quantity}
-                    <Button
-                        shape="circle"
-                        icon={<PlusOutlined />}
-                        size="small"
-                        onClick={() => addToCart(cartItem)}
-                    />
                 </Space>
                 <div className="font-semibold">{formatCurrency(total)}</div>
             </div>
