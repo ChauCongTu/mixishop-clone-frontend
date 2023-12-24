@@ -5,7 +5,7 @@ import { getCurrentTime } from '@/utils/time'
 import React from 'react'
 
 type Props = {
-    product: ProductFullInfo
+    product: ProductFullInfo | ProductType
 }
 
 const ProductPrice: React.FC<Props> = ({ product }) => {

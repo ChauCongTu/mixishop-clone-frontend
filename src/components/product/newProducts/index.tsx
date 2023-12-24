@@ -7,17 +7,25 @@ import toast from 'react-hot-toast'
 import ProductItem from '..'
 
 const NewProduct = () => {
+    const [current, setCurrent] = useState(1);
     const [products, setProducts] = useState<ProductType[]>([]);
     const [loading, setLoading] = useState(false);
+    const [loadingMore, setLoadingMore] = useState(false);
+
     useEffect(() => {
         setLoading(true);
         getProducts()
             .then((res: any) => setProducts(res.data))
             .catch((e) => toast.error('Có lỗi trong quá trình tải sản phẩm! Hãy thử Reload trang.'))
-            .finally(() => setLoading(false));
+        setLoading(false);
     }, []);
-    const handleSeeAll = () => {
-        redirect('/categories');
+    const handleLoadMore = () => {
+        setLoadingMore(true);
+        setCurrent(current + 1);
+        getProducts({ page: current })
+            .then((res: any) => setProducts(prevProducts => [...prevProducts, ...res.data]))
+            .catch((e) => toast.error('Có lỗi trong quá trình tải sản phẩm! Hãy thử Reload trang.'))
+        setLoadingMore(false);
     }
     return (
         <div className='px-2 lg:px-40'>
@@ -34,7 +42,7 @@ const NewProduct = () => {
             </Spin>
 
             <div className='mt-5 text-center'>
-                <Button onClick={handleSeeAll}>Xem Tất Cả</Button>
+                <Button loading={loadingMore} onClick={handleLoadMore}>Xem Thêm</Button>
             </div>
         </div>
     )

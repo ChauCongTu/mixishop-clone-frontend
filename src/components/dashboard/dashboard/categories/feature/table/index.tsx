@@ -19,11 +19,13 @@ const CategoriesTable: React.FC<Type> = ({ categories, setCategories }) => {
             title: 'ID',
             dataIndex: 'id',
             key: 'id',
+            sorter: true,
         },
         {
             title: 'TÊN DANH MỤC',
             dataIndex: 'name',
             key: 'name',
+            sorter: true,
             render: (text) => <a>{text}</a>,
         },
         {
@@ -51,7 +53,7 @@ const CategoriesTable: React.FC<Type> = ({ categories, setCategories }) => {
         },
     ];
     return (
-        <Table columns={columns} dataSource={categories} />
+        <Table bordered columns={columns} dataSource={categories} />
 
     );
 };

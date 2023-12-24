@@ -24,15 +24,14 @@ export default function Home() {
   };
   return (
     <main>
-      <Banner />
       <div className='text-center py-20 text-3xl font-bold'>
-        <p className=''>SẢN PHẨM MỚI</p>
+        <p>SẢN PHẨM MỚI</p>
         <div className='w-ful'></div>
       </div>
       <NewProduct />
       <div className='mt-10 px-3 lg:px-40'>
         <div className="flex">
-          <div className='w-3/6 lg:pe-3'>
+          <div className='w-full lg:w-3/6 lg:pe-3'>
             <Card title="Địa chỉ cửa hàng" style={{ width: '100%' }}>
               <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
                 <iframe
@@ -46,7 +45,7 @@ export default function Home() {
               </div>
             </Card>
           </div>
-          <div className="w-3/6 lg:ps-3">
+          <div className="w-full lg:w-3/6 lg:ps-3">
             <Card title="Liên hệ với chúng tôi" style={{ width: '100%' }}>
               <Form onFinish={onFinish} labelCol={{ span: 6 }} wrapperCol={{ span: 18 }}>
                 <Form.Item label={'Họ tên:'} name="name" rules={[{ required: true, message: 'Vui lòng nhập tên của bạn!' }]}>
