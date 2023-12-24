@@ -24,6 +24,7 @@ export default function Home() {
   };
   return (
     <main>
+      
       <div className='text-center py-20 text-3xl font-bold'>
         <p>SẢN PHẨM MỚI</p>
         <div className='w-ful'></div>
