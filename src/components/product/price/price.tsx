@@ -13,7 +13,7 @@ const ProductPrice: React.FC<Props> = ({ product }) => {
     return (
         <div>
             {
-                (product.discount_to >= currentTimestamp) ?
+                (product.discount_to && product.discount_to >= currentTimestamp) ?
                     <><span className='font-bold text-red-500'>{formatCurrency(product.discount_price)}</span> <del className='italic font-light text-sm'>{formatCurrency(product.price)}</del></> :
                     <span className='font-bold'>{formatCurrency(product.price)}</span>
             }

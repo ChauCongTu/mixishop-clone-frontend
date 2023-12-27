@@ -1,7 +1,6 @@
 'use client'
 import { Divider, Button } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
 import CreateCategory from '../../../../components/dashboard/dashboard/categories/feature/create';
 import { CategoryType } from '@/modules/categories/types/type';
 import CategoriesTable from '@/components/dashboard/dashboard/categories/feature/table';

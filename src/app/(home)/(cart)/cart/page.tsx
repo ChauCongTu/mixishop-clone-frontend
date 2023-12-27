@@ -57,6 +57,7 @@ function Cart() {
         </div>
         <div className="w-full lg:w-2/6 ps-3">
           THANH TOÁN
+          <p><Button onClick={() => addToCart(item)}>ADD</Button></p>
         </div>
       </div>
     </div>

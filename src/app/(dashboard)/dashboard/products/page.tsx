@@ -1,4 +1,5 @@
 'use client'
+import CreateProduct from '@/components/dashboard/dashboard/products/feature/create';
 import ProductTable from '@/components/dashboard/dashboard/products/feature/table';
 import { getProducts } from '@/modules/products/services/getProducts';
 import { ProductType } from '@/modules/products/types/type';
@@ -20,7 +21,7 @@ const ProductAdmin = (props: Props) => {
       <div className='flex flex-wrap items-center justify-between pt-3'>
         <div className='text-xl font-bold'>QUẢN LÝ SẢN PHẨM</div>
         <div>
-          <Button>Thêm sản phẩm</Button>
+          <CreateProduct />
         </div>
       </div>
       <Divider />

@@ -35,7 +35,7 @@ const CountdownTimer: React.FC<{ timestamp: number; label?: string | 'KHUYẾN M
     <div>
       <div className="countdown_">
         <div className="countdown_title">
-          <div className="text-white font-bold py-3">{label ? label : 'KHUYẾN MÃI CÒN'}</div>
+          <div className="text-white font-bold py-3">{label ? label : 'KẾT THÚC TRONG'}</div>
         </div>
         <div className="countdown__">
           <div className="date-item">

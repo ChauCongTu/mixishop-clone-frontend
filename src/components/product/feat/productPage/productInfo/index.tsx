@@ -1,6 +1,7 @@
 import ProductPrice from '@/components/product/price/price'
 import { getQuantity } from '@/modules/products/services/options/getQuantity'
 import { ProductFullInfo } from '@/modules/products/types/fullProduct'
+import { getCurrentTime } from '@/utils/time'
 import { Divider, InputNumber, Select } from 'antd'
 import React, { useEffect, useState } from 'react'
 import CountdownComponent from '../countdown'
@@ -20,6 +21,7 @@ type Props = {
 
 const ProductInfo: React.FC<Props> = ({ id, product, quantity, size, color, sizes, colors, setColor, setSize, setQuantity }) => {
     const [totalQuantity, setTotalQuantity] = useState(product.total_quantity);
+    const currentTimestamp = getCurrentTime();
     useEffect(() => {
         handleChangeOption();
     }, [color, size])
@@ -40,9 +42,13 @@ const ProductInfo: React.FC<Props> = ({ id, product, quantity, size, color, size
             <div className='text-3xl font-bold'>{product.name}</div>
             <Divider />
             <div className="text-xl mt-5"><ProductPrice product={product} /></div>
-            <div className='mt-5'>
-                <CountdownComponent timestamp={product.discount_to} />
-            </div>
+            {
+                (product && product.discount_to && product.discount_to <= currentTimestamp) ?
+                    <div className='mt-5'>
+                        <CountdownComponent timestamp={product.discount_to} />
+                    </div>
+                    : <></>
+            }
             <div className="mt-5 flex">
                 <Select
                     placeholder='Chọn Size'
